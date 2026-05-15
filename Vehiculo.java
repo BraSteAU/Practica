@@ -21,9 +21,7 @@ public class Vehiculo {
     public String getPlaca() {
         return Placa;
     }
-    public void setPlaca(String placa) {
-        Placa = placa;
-    }
+
     public String getMarca() {
         return Marca;
     }
