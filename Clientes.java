@@ -2,20 +2,32 @@ public class Clientes {
     private String Cedula;
     private String Nombre;
     private String Apellido;
-    private String Telefono;
+    private int Telefono;
     private String Direccion;
     private String LicenciaConduccion;
    
 
-    public Clientes(String Cedula, String Nombre, String Apellido, String Telefono, String Direccion, String LicenciaConduccion) {
-        this.Cedula = Cedula;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Telefono = Telefono;
-        this.Direccion = Direccion;
-        this.LicenciaConduccion = LicenciaConduccion;
-       
+    
+    
+
+
+    public Clientes(String cedula, String nombre, String apellido, int telefono, String direccion,
+            String licenciaConduccion) {
+        Cedula = cedula;
+        Nombre = nombre;
+        Apellido = apellido;
+        Telefono = telefono;
+        Direccion = direccion;
+        LicenciaConduccion = licenciaConduccion;
     }
+
+
+
+    public Clientes() {
+
+    }
+
+
 
     public String getCedula() {
         return Cedula;
@@ -41,11 +53,11 @@ public class Clientes {
         this.Apellido = Apellido;
     }
 
-    public String getTelefono() {
+    public int getTelefono() {
         return Telefono;
     }
 
-    public void setTelefono(String Telefono) {
+    public void setTelefono(int Telefono) {
         this.Telefono = Telefono;
     }
 

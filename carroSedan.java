@@ -1,4 +1,4 @@
-package Practica;
+
 
 public class carroSedan extends Vehiculo {
     private String tipoCombustible;
