@@ -1,4 +1,4 @@
-package Practica;
+
 
 public class camionetaSUV extends Vehiculo {
     private String tipoTraccion; //4x2 4x4

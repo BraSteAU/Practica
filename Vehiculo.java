@@ -1,4 +1,4 @@
-package Practica;
+
 
 public class Vehiculo {
     protected String Placa;

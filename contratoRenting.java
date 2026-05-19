@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 
-import Practica.Vehiculo;
 
 public class contratoRenting extends Vehiculo {
     private String IdContrato;
