@@ -35,6 +35,7 @@ public class Clientes {
 
     public void setCedula(String Cedula) {
         this.Cedula = Cedula;
+        this.LicenciaConduccion = Cedula;
     }
 
     public String getNombre() {
@@ -73,8 +74,6 @@ public class Clientes {
         return LicenciaConduccion;
     }
 
-    public void setLicenciaConduccion(String LicenciaConduccion) {
-        this.LicenciaConduccion = LicenciaConduccion;
-    }
+    
 
 }

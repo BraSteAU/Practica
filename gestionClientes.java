@@ -27,4 +27,32 @@ public class gestionClientes {
         }
         return clientes;
     }
+
+    public ArrayList<Clientes> modificarClientes(ArrayList<Clientes> clientes, Scanner sc){
+        String cedula = "";
+        if(clientes.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return clientes;
+        }
+        System.out.println("Ingrese la cedula del cliente a modificar: ");
+        cedula = sc.next();
+        for(Clientes c : clientes){
+            if(c.getCedula().equals(cedula)){
+                System.out.println("Ingrese el nuevo Nombre: ");
+                c.setNombre(sc.next());
+                System.out.println("Ingrese el nuevo Apellido: ");
+                c.setApellido(sc.next());
+                System.out.println("Ingrese el nuevo Telefono: ");
+                c.setTelefono(sc.nextInt());
+                System.out.println("Ingrese la nueva Direccion: ");
+                c.setDireccion(sc.next());
+                System.out.println("Cliente modificado correctamente");
+            }
+            return clientes;
+        }
+        System.out.println("Cliente no encontrado");
+        return clientes;
+    }
+
+    
 }
