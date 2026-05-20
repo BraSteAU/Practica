@@ -15,7 +15,7 @@ public class gestionClientes {
             System.out.println("Ingrese apellido del cliente: ");
             c.setApellido(sc.next());
             System.out.println("Ingrese telefono del cliente: ");
-            c.setTelefono(sc.nextInt());
+            c.setTelefono(sc.next());
             System.out.println("Ingrese direccion del cliente: ");
             c.setDireccion(sc.next());
             clientes.add(c);
@@ -43,7 +43,7 @@ public class gestionClientes {
                 System.out.println("Ingrese el nuevo Apellido: ");
                 c.setApellido(sc.next());
                 System.out.println("Ingrese el nuevo Telefono: ");
-                c.setTelefono(sc.nextInt());
+                c.setTelefono(sc.next());
                 System.out.println("Ingrese la nueva Direccion: ");
                 c.setDireccion(sc.next());
                 System.out.println("Cliente modificado correctamente");
