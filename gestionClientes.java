@@ -72,4 +72,14 @@ public class gestionClientes {
         System.out.println("Cliente no encontrado");
         return clientes;
     }
+
+    public void mostrarClientes(ArrayList<Clientes> clientes){
+        if(clientes.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return;
+        }
+        for(Clientes c : clientes){
+            System.out.println(c);
+        }
+    }
 }
