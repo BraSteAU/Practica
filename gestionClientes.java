@@ -54,5 +54,22 @@ public class gestionClientes {
         return clientes;
     }
 
-    
+    public ArrayList<Clientes> eliminarClientes(ArrayList<Clientes> clientes,Scanner sc){
+        if(clientes.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return clientes;
+        }
+        String cedula = "";
+        System.out.println("Ingrese la cedula del cliente a eliminar: ");
+        cedula = sc.next();
+        for(Clientes c : clientes){
+            if(c.getCedula().equals(cedula)){
+                clientes.remove(c);
+                System.out.println("Cliente eliminado correctamente");
+                return clientes;
+            }
+        }
+        System.out.println("Cliente no encontrado");
+        return clientes;
+    }
 }
