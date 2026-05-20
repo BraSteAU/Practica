@@ -2,7 +2,7 @@ public class Clientes {
     private String Cedula;
     private String Nombre;
     private String Apellido;
-    private int Telefono;
+    private String Telefono;
     private String Direccion;
     private String LicenciaConduccion;
    
@@ -11,7 +11,7 @@ public class Clientes {
     
 
 
-    public Clientes(String cedula, String nombre, String apellido, int telefono, String direccion,
+    public Clientes(String cedula, String nombre, String apellido, String telefono, String direccion,
             String licenciaConduccion) {
         Cedula = cedula;
         Nombre = nombre;
@@ -54,11 +54,11 @@ public class Clientes {
         this.Apellido = Apellido;
     }
 
-    public int getTelefono() {
+    public String getTelefono() {
         return Telefono;
     }
 
-    public void setTelefono(int Telefono) {
+    public void setTelefono(String Telefono) {
         this.Telefono = Telefono;
     }
 
@@ -74,6 +74,16 @@ public class Clientes {
         return LicenciaConduccion;
     }
 
+    @Override
+    public String toString() {
+        return "Cedula: " + Cedula +
+           "\nNombre: " + Nombre +
+           "\nApellido: " + Apellido +
+           "\nTelefono: " + Telefono +
+           "\nDireccion: " + Direccion +
+           "\nLicencia: " + LicenciaConduccion +
+           "\n---------------------------";
+    }
     
 
 }
