@@ -64,4 +64,48 @@ public class GestionVehiculos {
        }
        return vehiculos;
     }
+    
+    public ArrayList<Vehiculo> modificarVehiculos(ArrayList<Vehiculo> vehiculos,Scanner sc){
+        if(vehiculos.isEmpty()){
+            System.out.println("No hay vehiculos registrados ");
+            return vehiculos;
+        }
+        
+        System.out.println("Ingrese la placa del vehiculo a modificar: ");
+        String placa = sc.next();
+        for(Vehiculo v : vehiculos){
+            if(v.getPlaca().equals(placa)){
+                System.out.println("Ingrese la nueva marca: ");
+                v.setMarca(sc.next());
+                System.out.println("Ingrese el nuevo modelo: ");
+                v.setModelo(sc.nextInt());
+                System.out.println("Ingrese el nuevo precio: ");
+                v.setPrecioDiario(sc.nextFloat());
+                System.out.println("Ingrese el nuevo estado: ");
+                v.setEstado(sc.next());
+
+                if(v instanceof carroSedan){
+                    carroSedan sedan = (carroSedan) v;
+                    System.out.println("Ingrese el nuevo tipo de combustible: ");
+                    sedan.setTipoCombustible(sc.next());
+                    System.out.println("Ingrese la nueva transmision: ");
+                    sedan.setTransmision(sc.next());
+                }
+                else if (v instanceof camionetaSUV){
+                    camionetaSUV camioneta = (camionetaSUV) v;
+                    System.out.println("Ingrese el nuevo tipo de traccion:");
+                    camioneta.setTipoTraccion(sc.next());
+
+                    System.out.println("Ingrese la nueva capacidad de pasajeros:");
+                    camioneta.setCapacidadPasajeros(sc.nextInt());
+                }
+                System.out.println("Vehiculo modificado correctamente");
+
+            }
+        }
+        return vehiculos;
+
+    }
+
+
 }
