@@ -47,5 +47,9 @@ public class Vehiculo {
         Estado = estado;
     }
 
+    public void setPlaca(String placa) {
+        Placa = placa;
+    }
+
     
 }
