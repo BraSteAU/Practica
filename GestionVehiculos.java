@@ -107,5 +107,23 @@ public class GestionVehiculos {
 
     }
 
+    public ArrayList<Vehiculo> eliminarVehiculos(ArrayList<Vehiculo> vehiculos,Scanner sc){
+        if(vehiculos.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return vehiculos;
+        }
+        System.out.println("Ingrese la placa del vehiculo a modificar: ");
+        String placa = sc.next();
+        for(Vehiculo v : vehiculos){
+            if(v.getPlaca().equals(placa)){
+                vehiculos.remove(v);
+                System.out.println("Vehiculo eliminado correctamente");
+                return vehiculos;
+            }
+        }
+        System.out.println("Vehiculo no encontrado");
+        return vehiculos;
+
+    }
 
 }
