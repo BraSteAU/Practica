@@ -123,7 +123,20 @@ public class GestionVehiculos {
         }
         System.out.println("Vehiculo no encontrado");
         return vehiculos;
+    }
 
+    public void buscarVehiculos(ArrayList<Vehiculo> vehiculos,Scanner sc){
+        if(vehiculos.isEmpty()){
+            System.out.println("No hay vehiculos registrados");
+            return;
+        }
+        System.out.println("Ingrese la placa del vehiculo que quiere ver: ");
+        String placa = sc.next();
+        for(Vehiculo v : vehiculos){
+            if(v.getPlaca().equals(placa)){
+                System.out.println(v);
+            }
+        }
     }
 
 }
