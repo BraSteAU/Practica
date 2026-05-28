@@ -7,15 +7,27 @@ public class Clientes {
     private String LicenciaConduccion;
    
 
-    public Clientes(String Cedula, String Nombre, String Apellido, String Telefono, String Direccion, String LicenciaConduccion) {
-        this.Cedula = Cedula;
-        this.Nombre = Nombre;
-        this.Apellido = Apellido;
-        this.Telefono = Telefono;
-        this.Direccion = Direccion;
-        this.LicenciaConduccion = LicenciaConduccion;
-       
+    
+    
+
+
+    public Clientes(String cedula, String nombre, String apellido, String telefono, String direccion,
+            String licenciaConduccion) {
+        Cedula = cedula;
+        Nombre = nombre;
+        Apellido = apellido;
+        Telefono = telefono;
+        Direccion = direccion;
+        LicenciaConduccion = licenciaConduccion;
     }
+
+
+
+    public Clientes() {
+
+    }
+
+
 
     public String getCedula() {
         return Cedula;
@@ -23,6 +35,7 @@ public class Clientes {
 
     public void setCedula(String Cedula) {
         this.Cedula = Cedula;
+        this.LicenciaConduccion = Cedula;
     }
 
     public String getNombre() {
@@ -61,8 +74,16 @@ public class Clientes {
         return LicenciaConduccion;
     }
 
-    public void setLicenciaConduccion(String LicenciaConduccion) {
-        this.LicenciaConduccion = LicenciaConduccion;
+    @Override
+    public String toString() {
+        return "Cedula: " + Cedula +
+           "\nNombre: " + Nombre +
+           "\nApellido: " + Apellido +
+           "\nTelefono: " + Telefono +
+           "\nDireccion: " + Direccion +
+           "\nLicencia: " + LicenciaConduccion +
+           "\n---------------------------";
     }
+    
 
 }

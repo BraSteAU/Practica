@@ -1,6 +1,5 @@
 import java.time.LocalDate;
 
-import Practica.Vehiculo;
 
 public class contratoRenting extends Vehiculo {
     private String IdContrato;
@@ -28,11 +27,17 @@ public class contratoRenting extends Vehiculo {
         return IdContrato;
     }
 
+    public void setIdContrato(String idContrato) {
+        IdContrato = idContrato;
+    }
 
     public int getCedulaCliente() {
         return CedulaCliente;
     }
 
+    public void setCedulaCliente(int cedulaCliente) {
+        CedulaCliente = cedulaCliente;
+    }
 
     public LocalDate getFechaInicio() {
         return FechaInicio;
