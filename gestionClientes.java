@@ -3,10 +3,9 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class gestionClientes {
-    public ArrayList<Clientes> resgistrClientes(Scanner sc){
+    
+    public ArrayList<Clientes> registrarClientes(Scanner sc){
         ArrayList<Clientes> clientes = new ArrayList<>();
-        boolean condicion = true;
-        while (condicion) {
             Clientes c = new Clientes();
             System.out.println("Ingrese cedula del cliente: ");
             c.setCedula(sc.next());
@@ -19,12 +18,7 @@ public class gestionClientes {
             System.out.println("Ingrese direccion del cliente: ");
             c.setDireccion(sc.next());
             clientes.add(c);
-            System.out.println("Desea ingresar mas clinetes: 1)Si\n2)No");
-            int opt = sc.nextInt();
-            if (opt == 2) {
-                condicion = false;
-            }
-        }
+            
         return clientes;
     }
 
