@@ -67,6 +67,22 @@ public class gestionClientes {
         return clientes;
     }
 
+    public ArrayList<Clientes> buscarClientes(ArrayList<Clientes> clientes, Scanner sc){
+        if(clientes.isEmpty()){
+            System.out.println("No hay clientes registrados");
+            return clientes;
+        }
+        String cedula = "";
+        System.out.println("Ingrese la cedula del cliente a buscar: ");
+        cedula = sc.next();
+        for(Clientes c : clientes){
+            if(c.getCedula().equals(cedula)){
+                return clientes;
+            }
+        }
+        return null;
+    }
+
     public void mostrarClientes(ArrayList<Clientes> clientes){
         if(clientes.isEmpty()){
             System.out.println("No hay clientes registrados");
