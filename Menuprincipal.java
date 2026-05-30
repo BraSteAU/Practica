@@ -5,13 +5,11 @@ import java.util.Scanner;
 public class Menuprincipal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-<<<<<<< Updated upstream
-=======
         ArrayList<Clientes> clientes = new ArrayList<>();
         LinkedList<contratoRenting> contratoRenting = new LinkedList<>();
         Metodoscontratos gr = new Metodoscontratos();
         gestionClientes gc = new gestionClientes();
->>>>>>> Stashed changes
+      
         boolean seguir = true;
         while (seguir) {
             System.out.println("Bienvenido al CarroItm");
@@ -24,27 +22,44 @@ public class Menuprincipal {
             System.out.println("6) Salir");
             int opt = sc.nextInt();
             switch (opt) {
-                case 1:                 
-                    System.out.println("Gestion de clientes");
-                    System.out.println("1) Registrar cliente");
-                    System.out.println("2) Modificar cliente");
-                    System.out.println("3) Eliminar cliente");
-                    System.out.println("4) Buscar cliente");
-                    System.out.println("5) Ver todos los clientes");
-                    System.out.println("6) Regresar al menu principal");
-                    int opcion = sc.nextInt();
-                    ArrayList<Clientes> clientes = new ArrayList<>();
-                    gestionClientes gc = new gestionClientes();
-                    switch (opcion) {
-                        case 1:
-                            clientes = gc.resgistrClientes(sc);
-                            break;
-                        case 5:
-                            gc.mostrarClientes(clientes);
-                            break; 
-                        default:
-                            break;
-                    }
+                case 1:    
+                    boolean submenu = true;
+                    while (submenu) {
+                        System.out.println("Gestion de clientes");
+                        System.out.println("1) Registrar cliente");
+                        System.out.println("2) Modificar cliente");
+                        System.out.println("3) Eliminar cliente");
+                        System.out.println("4) Buscar cliente");
+                        System.out.println("5) Ver todos los clientes");
+                        System.out.println("6) Regresar al menu principal");
+                        int opcion = sc.nextInt();
+                        switch (opcion) {
+                            case 1:
+                                clientes = gc.registrarClientes(sc);
+                                break;
+                            case 2:
+                                clientes = gc.modificarClientes(clientes, sc);
+                                break;
+                            case 3:
+                                clientes = gc.eliminarClientes(clientes, sc);
+                                break;
+                            case 4:
+                                clientes = gc.buscarClientes(clientes, sc);
+                                if(clientes != null){
+                                    System.out.println(clientes);
+                                }
+                                break;
+                            case 5:
+                                gc.mostrarClientes(clientes);
+                                break; 
+                            case 6:
+                                submenu = false;
+                                break;
+                            default:
+                                System.out.println("Opcion invalida");
+                                break;
+                        }
+                    }             
                     break;
                 case 2:
                     System.out.println("Pagina en mantenimieto");
