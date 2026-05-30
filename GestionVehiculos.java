@@ -2,49 +2,50 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestionVehiculos {
+    Validaciones validaciones = new Validaciones();
+    ArrayList<Vehiculo> vehiculos = new ArrayList<>();
     public ArrayList<Vehiculo> registrarVehiculo(Scanner sc){
-        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
         boolean condicion = true;
-       while (condicion) {
+        while (condicion) {
             System.out.println("Seleccione el tipo de vehiculo");
             System.out.println("1) Carro sedan ");
             System.out.println("2) Camioneta SUV");
-            int opcion = sc.nextInt();
+            int opcion = validaciones.validarEnteroPositivo(sc);
             Vehiculo v = null;
             switch (opcion) {
                 case 1:
                     carroSedan sedan = new carroSedan();
                     System.out.println("Ingrese la placa del vehiculo: ");
-                    sedan.setPlaca(sc.next());
+                    sedan.setPlaca(validaciones.validarNumerosAlfabeto(sc, "Placa"));
                     System.out.println("Ingrese la marca: ");
-                    sedan.setMarca(sc.next());
+                    sedan.setMarca(validaciones.validarTexto(sc));
                      System.out.println("Ingrese el modelo:");
-                    sedan.setModelo(sc.nextInt());
+                    sedan.setModelo(validaciones.validarEnteroPositivo(sc));
                     System.out.println("Ingrese el precio diario:");
-                    sedan.setPrecioDiario(sc.nextFloat());
+                    sedan.setPrecioDiario(validaciones.validarFloatPositivo(sc, "Precio"));
                     System.out.println("Ingrese el estado:");
-                    sedan.setEstado(sc.next());
+                    sedan.setEstado(validaciones.validarEstado(sc));
                     System.out.println("Ingrese el tipo de combustible:");
-                    sedan.setTipoCombustible(sc.next());
+                    sedan.setTipoCombustible(validaciones.validarCombustible(sc));
                     System.out.println("Ingrese la transmision:");
-                    sedan.setTransmision(sc.next());
+                    sedan.setTransmision(validaciones.validarTransmision(sc));
                     v = sedan;
                     break;
             
                 case 2:
                     camionetaSUV camioneta = new camionetaSUV();
                     System.out.println("Ingrese la placa:");
-                    camioneta.setPlaca(sc.next());
+                    camioneta.setPlaca(validaciones.validarNumerosAlfabeto(sc, "Placa"));
                     System.out.println("Ingrese la marca:");
-                    camioneta.setMarca(sc.next());
+                    camioneta.setMarca(validaciones.validarTexto(sc));
                     System.out.println("Ingrese el modelo:");
-                    camioneta.setModelo(sc.nextInt());
+                    camioneta.setModelo(validaciones.validarEnteroPositivo(sc));
                     System.out.println("Ingrese el precio diario:");
-                    camioneta.setPrecioDiario(sc.nextFloat());
+                    camioneta.setPrecioDiario(validaciones.validarFloatPositivo(sc, "Precio"));
                     System.out.println("Ingrese el estado:");
-                    camioneta.setEstado(sc.next());
+                    camioneta.setEstado(validaciones.validarEstado(sc));
                     System.out.println("Ingrese el tipo de traccion:");
-                    camioneta.setTipoTraccion(sc.next());
+                    camioneta.setTipoTraccion(validaciones.validarTraccion(sc));
                     System.out.println("Ingrese la capacidad de pasajeros:");
                     camioneta.setCapacidadPasajeros(sc.nextInt());
                     v = camioneta;
