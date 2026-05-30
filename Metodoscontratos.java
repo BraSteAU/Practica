@@ -98,6 +98,23 @@ public class Metodoscontratos {
         return l;
     }
 
+     public LinkedList<contratoRenting> Finalizarcontrato(String idContrato, LinkedList<contratoRenting> l, Scanner sc) {
+        boolean eliminado = false;
+        for (int i = 0; i < l.size(); i++) {
+            contratoRenting o = l.get(i);
+            if (o.getIdContrato().equals(idContrato)) {
+                l.remove(i);
+                eliminado = true;
+                System.out.println("Contrato finalizado y eliminado de la lista.");
+                break;
+            }
+        }
+        if (!eliminado) {
+            System.out.println("Contrato no encontrado para finalizar.");
+        }
+        return l;
+    }
+    
     public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
