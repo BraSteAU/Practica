@@ -21,7 +21,9 @@ public class Vehiculo {
     public String getPlaca() {
         return Placa;
     }
-
+    public void setPlaca(String placa) {
+        Placa = placa;
+    }
     public String getMarca() {
         return Marca;
     }
@@ -47,9 +49,6 @@ public class Vehiculo {
         Estado = estado;
     }
 
-    public void setPlaca(String placa) {
-        Placa = placa;
-    }
 
     
 }
