@@ -4,19 +4,20 @@ import java.util.Scanner;
 
 public class gestionClientes {
     
+    Validaciones v = new Validaciones();
     public ArrayList<Clientes> registrarClientes(Scanner sc){
         ArrayList<Clientes> clientes = new ArrayList<>();
             Clientes c = new Clientes();
             System.out.println("Ingrese cedula del cliente: ");
-            c.setCedula(sc.next());
+            c.setCedula(v.validarNumeros(sc));
             System.out.println("Ingrese nombre del cliente: ");
-            c.setNombre(sc.next());
+            c.setNombre(v.validarTexto(sc));
             System.out.println("Ingrese apellido del cliente: ");
-            c.setApellido(sc.next());
+            c.setApellido(v.validarTexto(sc));
             System.out.println("Ingrese telefono del cliente: ");
-            c.setTelefono(sc.next());
+            c.setTelefono(v.validarNumeros(sc));
             System.out.println("Ingrese direccion del cliente: ");
-            c.setDireccion(sc.next());
+            c.setDireccion(v.validarDireccion(sc));
             clientes.add(c);
             
         return clientes;
