@@ -5,20 +5,21 @@ import java.util.Scanner;
 public class gestionClientes {
     
     Validaciones v = new Validaciones();
+    ArrayList<Clientes> clientes = new ArrayList<>();
     public ArrayList<Clientes> registrarClientes(Scanner sc){
-        ArrayList<Clientes> clientes = new ArrayList<>();
-            Clientes c = new Clientes();
-            System.out.println("Ingrese cedula del cliente: ");
-            c.setCedula(v.validarNumeros(sc));
-            System.out.println("Ingrese nombre del cliente: ");
-            c.setNombre(v.validarTexto(sc));
-            System.out.println("Ingrese apellido del cliente: ");
-            c.setApellido(v.validarTexto(sc));
-            System.out.println("Ingrese telefono del cliente: ");
-            c.setTelefono(v.validarNumeros(sc));
-            System.out.println("Ingrese direccion del cliente: ");
-            c.setDireccion(v.validarDireccion(sc));
-            clientes.add(c);
+        Clientes c = new Clientes();
+        System.out.println("Ingrese cedula del cliente: ");
+        c.setCedula(v.validarNumeros(sc));
+        System.out.println("Ingrese nombre del cliente: ");
+        c.setNombre(v.validarTexto(sc));
+        System.out.println("Ingrese apellido del cliente: ");
+        c.setApellido(v.validarTexto(sc));
+        System.out.println("Ingrese telefono del cliente: ");
+        c.setTelefono(v.validarNumeros(sc));
+        System.out.println("Ingrese direccion del cliente: ");
+        sc.nextLine();
+        c.setDireccion(v.validarDireccion(sc));
+        clientes.add(c);
             
         return clientes;
     }
@@ -30,20 +31,21 @@ public class gestionClientes {
             return clientes;
         }
         System.out.println("Ingrese la cedula del cliente a modificar: ");
-        cedula = sc.next();
+        cedula = v.validarNumeros(sc);
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 System.out.println("Ingrese el nuevo Nombre: ");
-                c.setNombre(sc.next());
+                c.setNombre(v.validarTexto(sc));
                 System.out.println("Ingrese el nuevo Apellido: ");
-                c.setApellido(sc.next());
+                c.setApellido(v.validarTexto(sc));
                 System.out.println("Ingrese el nuevo Telefono: ");
-                c.setTelefono(sc.next());
+                c.setTelefono(v.validarNumeros(sc));
                 System.out.println("Ingrese la nueva Direccion: ");
-                c.setDireccion(sc.next());
+                sc.nextLine();
+                c.setDireccion(v.validarDireccion(sc));
                 System.out.println("Cliente modificado correctamente");
+                return clientes;
             }
-            return clientes;
         }
         System.out.println("Cliente no encontrado");
         return clientes;
@@ -56,7 +58,7 @@ public class gestionClientes {
         }
         String cedula = "";
         System.out.println("Ingrese la cedula del cliente a eliminar: ");
-        cedula = sc.next();
+        cedula = v.validarNumeros(sc);
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 clientes.remove(c);
@@ -75,7 +77,7 @@ public class gestionClientes {
         }
         String cedula = "";
         System.out.println("Ingrese la cedula del cliente a buscar: ");
-        cedula = sc.next();
+        cedula = v.validarNumeros(sc);
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 return clientes;
