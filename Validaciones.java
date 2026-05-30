@@ -64,4 +64,41 @@ public class Validaciones {
         System.out.println(campo + " Invalido. Debe ser positivo.");
         return validarFloatPositivo(sc, campo);
     }
+    
+    public String validarEstado(Scanner sc){
+        String estado = sc.next().toLowerCase();
+        if(estado.equals("disponible") || estado.equals("alquilado")){
+            return estado;
+        }
+        System.out.println("Estado invalido, debe ser disponoble o alquilado");
+        return validarEstado(sc);
+    }
+
+    public String validarCombustible(Scanner sc){
+        String combustible = sc.next().toLowerCase();
+        if(combustible.equals("gasolina") || combustible.equals("diesel") || combustible.equals("electrico")){
+            return combustible;
+        }
+        System.out.println("Tipo de combustible invalido");
+        return validarCombustible(sc);
+    }
+
+    public String validarTransmision(Scanner sc){
+        String transmision = sc.next().toLowerCase();
+        if(transmision.equals("manual") || transmision.equals("automatica")){
+            return transmision;
+        }
+        System.out.println("Transmision invalida");
+        return validarTransmision(sc);
+    }
+
+    public String validarTraccion(Scanner sc){
+        String traccion = sc.next();
+        if(traccion.equals("4x2") || traccion.equals("4x4")){
+            return traccion;
+        }
+        System.out.println("Traccion invalida. Debe ser 4x2 o 4x4.");
+        return validarTraccion(sc);
+    }
+
 }
