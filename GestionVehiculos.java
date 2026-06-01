@@ -73,30 +73,29 @@ public class GestionVehiculos {
         }
         
         System.out.println("Ingrese la placa del vehiculo a modificar: ");
-        String placa = sc.next();
+        String placa = validaciones.validarNumerosAlfabeto(sc,"Placa");
         for(Vehiculo v : vehiculos){
             if(v.getPlaca().equals(placa)){
                 System.out.println("Ingrese la nueva marca: ");
-                v.setMarca(sc.next());
+                v.setMarca(validaciones.validarTexto(sc));
                 System.out.println("Ingrese el nuevo modelo: ");
-                v.setModelo(sc.nextInt());
+                v.setModelo(validaciones.validarEnteroPositivo(sc));
                 System.out.println("Ingrese el nuevo precio: ");
-                v.setPrecioDiario(sc.nextFloat());
+                v.setPrecioDiario(validaciones.validarFloatPositivo(sc, "Precio"));
                 System.out.println("Ingrese el nuevo estado: ");
-                v.setEstado(sc.next());
+                v.setEstado(validaciones.validarEstado(sc));
 
                 if(v instanceof carroSedan){
                     carroSedan sedan = (carroSedan) v;
                     System.out.println("Ingrese el nuevo tipo de combustible: ");
-                    sedan.setTipoCombustible(sc.next());
+                    sedan.setTipoCombustible(validaciones.validarCombustible(sc));
                     System.out.println("Ingrese la nueva transmision: ");
-                    sedan.setTransmision(sc.next());
+                    sedan.setTransmision(validaciones.validarTransmision(sc));
                 }
                 else if (v instanceof camionetaSUV){
                     camionetaSUV camioneta = (camionetaSUV) v;
                     System.out.println("Ingrese el nuevo tipo de traccion:");
-                    camioneta.setTipoTraccion(sc.next());
-
+                    camioneta.setTipoTraccion(validaciones.validarTraccion(sc));
                     System.out.println("Ingrese la nueva capacidad de pasajeros:");
                     camioneta.setCapacidadPasajeros(sc.nextInt());
                 }
@@ -114,7 +113,7 @@ public class GestionVehiculos {
             return vehiculos;
         }
         System.out.println("Ingrese la placa del vehiculo a modificar: ");
-        String placa = sc.next();
+        String placa = validaciones.validarNumerosAlfabeto(sc,"Placa");
         for(Vehiculo v : vehiculos){
             if(v.getPlaca().equals(placa)){
                 vehiculos.remove(v);
@@ -132,7 +131,7 @@ public class GestionVehiculos {
             return;
         }
         System.out.println("Ingrese la placa del vehiculo que quiere ver: ");
-        String placa = sc.next();
+        String placa = validaciones.validarNumerosAlfabeto(sc,"Placa");
         for(Vehiculo v : vehiculos){
             if(v.getPlaca().equals(placa)){
                 System.out.println(v);
