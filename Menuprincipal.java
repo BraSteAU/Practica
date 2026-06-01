@@ -6,9 +6,11 @@ public class Menuprincipal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
         ArrayList<Clientes> clientes = new ArrayList<>();
+        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
         LinkedList<contratoRenting> contratoRenting = new LinkedList<>();
         Metodoscontratos gr = new Metodoscontratos();
         gestionClientes gc = new gestionClientes();
+        GestionVehiculos gv = new GestionVehiculos();
       
         boolean seguir = true;
         while (seguir) {
@@ -20,10 +22,10 @@ public class Menuprincipal {
             System.out.println("4) Exportar");
             System.out.println("5) Importar");
             System.out.println("6) Salir");
+            boolean submenu = true;
             int opt = sc.nextInt();
             switch (opt) {
                 case 1:    
-                    boolean submenu = true;
                     while (submenu) {
                         System.out.println("Gestion de clientes");
                         System.out.println("1) Registrar cliente");
@@ -62,7 +64,35 @@ public class Menuprincipal {
                     }             
                     break;
                 case 2:
-                    System.out.println("Pagina en mantenimieto");
+                    while (submenu) {
+                        System.out.println("Gestion de vehiculos");
+                        System.out.println("1) Registrar vehiculo");
+                        System.out.println("2) Modificar vehiculo");
+                        System.out.println("3) Eliminar vehiculo");
+                        System.out.println("4) Buscar vehiculo");
+                        System.out.println("5) Regresar al menu principal");
+                        int opcion = sc.nextInt();
+                        switch (opcion) {
+                            case 1:
+                                vehiculos = gv.registrarVehiculo(sc);
+                                break;
+                            case 2:
+                                vehiculos = gv.modificarVehiculos(vehiculos, sc);
+                                break;
+                            case 3:
+                                vehiculos = gv.eliminarVehiculos(vehiculos, sc);
+                                break;
+                            case 4:
+                                gv.buscarVehiculos(vehiculos, sc);
+                                break;
+                            case 5:
+                                submenu = false;
+                                break;
+                            default:
+                                System.out.println("Opcion invalida");
+                                break;
+                        }
+                    }
                     break;
                 case 3:
                     boolean minmenu = true;
