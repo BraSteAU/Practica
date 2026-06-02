@@ -4,34 +4,32 @@ import java.util.Scanner;
 
 public class gestionClientes {
     
-    Validaciones v = new Validaciones();
-    ArrayList<Clientes> clientes = new ArrayList<>();
-    public ArrayList<Clientes> registrarClientes(Scanner sc){
+    public ArrayList<Clientes> registrarClientes(ArrayList<Clientes> clientes, Scanner sc){
+        if (clientes == null) {
+            clientes = new ArrayList<>();
+        }
         Clientes c = new Clientes();
         System.out.println("Ingrese cedula del cliente: ");
-        c.setCedula(v.validarNumeros(sc));
+        c.setCedula(sc.next());
         System.out.println("Ingrese nombre del cliente: ");
-        c.setNombre(v.validarTexto(sc));
+        c.setNombre(sc.next());
         System.out.println("Ingrese apellido del cliente: ");
-        c.setApellido(v.validarTexto(sc));
+        c.setApellido(sc.next());
         System.out.println("Ingrese telefono del cliente: ");
-        c.setTelefono(v.validarNumeros(sc));
+        c.setTelefono(sc.next());
         System.out.println("Ingrese direccion del cliente: ");
-        sc.nextLine();
-        c.setDireccion(v.validarDireccion(sc));
+        c.setDireccion(sc.next());
         clientes.add(c);
-            
         return clientes;
     }
 
     public ArrayList<Clientes> modificarClientes(ArrayList<Clientes> clientes, Scanner sc){
-        String cedula = "";
-        if(clientes.isEmpty()){
+        if(clientes == null || clientes.isEmpty()){
             System.out.println("No hay clientes registrados");
             return clientes;
         }
         System.out.println("Ingrese la cedula del cliente a modificar: ");
-        cedula = v.validarNumeros(sc);
+        String cedula = sc.next();
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 System.out.println("Ingrese el nuevo Nombre: ");
@@ -51,18 +49,20 @@ public class gestionClientes {
         return clientes;
     }
 
-    public ArrayList<Clientes> eliminarClientes(ArrayList<Clientes> clientes,Scanner sc){
+    public ArrayList<Clientes> eliminarClientes(ArrayList<Clientes> clientes, ArrayList<contratoRenting> contratos, Scanner sc){
         if(clientes.isEmpty()){
             System.out.println("No hay clientes registrados");
             return clientes;
         }
-        String cedula = "";
         System.out.println("Ingrese la cedula del cliente a eliminar: ");
-        cedula = v.validarNumeros(sc);
-        for(Clientes c : clientes){
+        String cedula = sc.next();
+        for (int i = 0; i < clientes.size(); i++) {
+            Clientes c = clientes.get(i);
             if(c.getCedula().equals(cedula)){
-                clientes.remove(c);
+                clientes.remove(i);
+                contratos.removeIf(ct -> String.valueOf(ct.getCedulaCliente()).equals(cedula));
                 System.out.println("Cliente eliminado correctamente");
+                System.out.println("Cualquier contrato asociado al cliente tambien fue eliminado.");
                 return clientes;
             }
         }
@@ -70,20 +70,20 @@ public class gestionClientes {
         return clientes;
     }
 
-    public ArrayList<Clientes> buscarClientes(ArrayList<Clientes> clientes, Scanner sc){
-        if(clientes.isEmpty()){
+    public void buscarClientes(ArrayList<Clientes> clientes, Scanner sc){
+        if(clientes == null || clientes.isEmpty()){
             System.out.println("No hay clientes registrados");
-            return clientes;
+            return;
         }
-        String cedula = "";
         System.out.println("Ingrese la cedula del cliente a buscar: ");
-        cedula = v.validarNumeros(sc);
+        String cedula = sc.next();
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
-                return clientes;
+                System.out.println(c);
+                return;
             }
         }
-        return null;
+        System.out.println("Cliente no encontrado");
     }
 
     public void mostrarClientes(ArrayList<Clientes> clientes){

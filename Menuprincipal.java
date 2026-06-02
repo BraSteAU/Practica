@@ -5,13 +5,10 @@ import java.util.Scanner;
 public class Menuprincipal {
     public static void main(String[] args) {
         Scanner sc = new Scanner(System.in);
-        ArrayList<Clientes> clientes = new ArrayList<>();
-        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
-        LinkedList<contratoRenting> contratoRenting = new LinkedList<>();
-        Metodoscontratos gr = new Metodoscontratos();
+        Estructurasdinamicas estructura = new Estructurasdinamicas();
         gestionClientes gc = new gestionClientes();
         GestionVehiculos gv = new GestionVehiculos();
-      
+        Metodoscontratos mc = new Metodoscontratos();
         boolean seguir = true;
         while (seguir) {
             System.out.println("Bienvenido al CarroItm");
@@ -37,22 +34,19 @@ public class Menuprincipal {
                         int opcion = sc.nextInt();
                         switch (opcion) {
                             case 1:
-                                clientes = gc.registrarClientes(sc);
+                                estructura.vector_clientes = gc.registrarClientes(estructura.vector_clientes, sc);
                                 break;
                             case 2:
-                                clientes = gc.modificarClientes(clientes, sc);
+                                estructura.vector_clientes = gc.modificarClientes(estructura.vector_clientes, sc);
                                 break;
                             case 3:
-                                clientes = gc.eliminarClientes(clientes, sc);
+                                estructura.vector_clientes = gc.eliminarClientes(estructura.vector_clientes, estructura.vector_contratos, sc);
                                 break;
                             case 4:
-                                clientes = gc.buscarClientes(clientes, sc);
-                                if(clientes != null){
-                                    System.out.println(clientes);
-                                }
+                                gc.buscarClientes(estructura.vector_clientes, sc);
                                 break;
                             case 5:
-                                gc.mostrarClientes(clientes);
+                                gc.mostrarClientes(estructura.vector_clientes);
                                 break; 
                             case 6:
                                 submenu = false;
@@ -64,29 +58,34 @@ public class Menuprincipal {
                     }             
                     break;
                 case 2:
-                    while (submenu) {
+                    boolean submenuVehiculos = true;
+                    while (submenuVehiculos) {
                         System.out.println("Gestion de vehiculos");
                         System.out.println("1) Registrar vehiculo");
                         System.out.println("2) Modificar vehiculo");
                         System.out.println("3) Eliminar vehiculo");
                         System.out.println("4) Buscar vehiculo");
-                        System.out.println("5) Regresar al menu principal");
-                        int opcion = sc.nextInt();
-                        switch (opcion) {
+                        System.out.println("5) Ver todos los vehiculos");
+                        System.out.println("6) Regresar al menu principal");
+                        int opcionVeh = sc.nextInt();
+                        switch (opcionVeh) {
                             case 1:
-                                vehiculos = gv.registrarVehiculo(sc);
+                                estructura.vector_vehiculos = gv.registrarVehiculo(estructura.vector_vehiculos, sc);
                                 break;
                             case 2:
-                                vehiculos = gv.modificarVehiculos(vehiculos, sc);
+                                estructura.vector_vehiculos = gv.modificarVehiculos(estructura.vector_vehiculos, sc);
                                 break;
                             case 3:
-                                vehiculos = gv.eliminarVehiculos(vehiculos, sc);
+                                estructura.vector_vehiculos = gv.eliminarVehiculos(estructura.vector_vehiculos, estructura.vector_contratos, sc);
                                 break;
                             case 4:
-                                gv.buscarVehiculos(vehiculos, sc);
+                                gv.buscarVehiculos(estructura.vector_vehiculos, sc);
                                 break;
                             case 5:
-                                submenu = false;
+                                gv.mostrarVehiculos(estructura.vector_vehiculos);
+                                break;
+                            case 6:
+                                submenuVehiculos = false;
                                 break;
                             default:
                                 System.out.println("Opcion invalida");
@@ -95,52 +94,52 @@ public class Menuprincipal {
                     }
                     break;
                 case 3:
-                    boolean minmenu = true;
-                    while (minmenu) {
+                    boolean submenuContratos = true;
+                    while (submenuContratos) {
                         System.out.println("Gestion de contratos de renting");
-                        System.out.println("1) Registrar nuevo contrato");
+                        System.out.println("1) Registrar contrato");
                         System.out.println("2) Modificar contrato");
                         System.out.println("3) Finalizar contrato");
                         System.out.println("4) Buscar contrato");
                         System.out.println("5) Ver todos los contratos");
                         System.out.println("6) Regresar al menu principal");
-                        int opcion = sc.nextInt();
-                        switch (opcion) {
+                        int opcionContrato = sc.nextInt();
+                        switch (opcionContrato) {
                             case 1:
-                                contratoRenting = gr.Registrarnuevocontrato(contratoRenting, sc);
+                                estructura.vector_contratos = mc.Registrarnuevocontrato(estructura.vector_contratos, sc);
                                 break;
                             case 2:
-                                String idModificar = sc.next();
-                                contratoRenting = gr.Modificarcontrato(idModificar, contratoRenting, sc);
+                                System.out.println("Ingrese el id del contrato a modificar:");
+                                String idContratoMod = sc.next();
+                                estructura.vector_contratos = mc.Modificarcontrato(idContratoMod, estructura.vector_contratos, sc);
                                 break;
                             case 3:
-                                String idFinalizar = sc.next();
-                                contratoRenting = gr.Finalizarcontrato(idFinalizar, contratoRenting, sc);
+                                System.out.println("Ingrese el id del contrato a finalizar:");
+                                String idContratoFin = sc.next();
+                                estructura.vector_contratos = mc.Finalizarcontrato(idContratoFin, estructura.vector_contratos, sc);
                                 break;
                             case 4:
-                                String idBuscar = sc.next();
-                                contratoRenting contrato = gr.BuscarContrato(idBuscar, contratoRenting);
-                                if (contrato != null) {
-                                    System.out.println("Contrato encontrado: " + contrato.getIdContrato());
-                                    System.out.println("Cédula: " + contrato.getCedulaCliente());
-                                    System.out.println("Fecha inicio: " + contrato.getFechaInicio());
-                                    System.out.println("Fecha fin: " + contrato.getFechaFinal());
-                                    System.out.println("Total de días: " + contrato.getTotalDias());
+                                System.out.println("Ingrese el id del contrato a buscar:");
+                                String idContratoBus = sc.next();
+                                contratoRenting resultado = mc.BuscarContrato(idContratoBus, estructura.vector_contratos);
+                                if (resultado != null) {
+                                    System.out.println("Contrato encontrado:");
+                                    System.out.println(resultado);
                                 } else {
                                     System.out.println("Contrato no encontrado");
                                 }
                                 break;
                             case 5:
-                                gr.MostrarLista(contratoRenting);
-                                break; 
+                                mc.MostrarLista(estructura.vector_contratos);
+                                break;
                             case 6:
-                                minmenu = false;
+                                submenuContratos = false;
                                 break;
                             default:
                                 System.out.println("Opcion invalida");
                                 break;
                         }
-                    }             
+                    }
                     break;
                 case 4:
                     System.out.println("Pagina en mantenimieto");
