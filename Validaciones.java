@@ -126,5 +126,4 @@ public class Validaciones {
             return validarFormatoFecha(sc);
         }
     }
-
 }
