@@ -2,8 +2,10 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestionVehiculos {
-    public ArrayList<Vehiculo> registrarVehiculo(Scanner sc){
-        ArrayList<Vehiculo> vehiculos = new ArrayList<>();
+    public ArrayList<Vehiculo> registrarVehiculo(ArrayList<Vehiculo> vehiculos, Scanner sc){
+        if (vehiculos == null) {
+            vehiculos = new ArrayList<>();
+        }
         boolean condicion = true;
        while (condicion) {
             System.out.println("Seleccione el tipo de vehiculo");
@@ -107,17 +109,20 @@ public class GestionVehiculos {
 
     }
 
-    public ArrayList<Vehiculo> eliminarVehiculos(ArrayList<Vehiculo> vehiculos,Scanner sc){
-        if(vehiculos.isEmpty()){
-            System.out.println("No hay clientes registrados");
+    public ArrayList<Vehiculo> eliminarVehiculos(ArrayList<Vehiculo> vehiculos, ArrayList<contratoRenting> contratos, Scanner sc){
+        if(vehiculos == null || vehiculos.isEmpty()){
+            System.out.println("No hay vehiculos registrados");
             return vehiculos;
         }
-        System.out.println("Ingrese la placa del vehiculo a modificar: ");
+        System.out.println("Ingrese la placa del vehiculo a eliminar: ");
         String placa = sc.next();
-        for(Vehiculo v : vehiculos){
+        for (int i = 0; i < vehiculos.size(); i++) {
+            Vehiculo v = vehiculos.get(i);
             if(v.getPlaca().equals(placa)){
-                vehiculos.remove(v);
+                vehiculos.remove(i);
+                contratos.removeIf(ct -> placa.equals(ct.getPlaca()));
                 System.out.println("Vehiculo eliminado correctamente");
+                System.out.println("Cualquier contrato asociado al vehiculo tambien fue eliminado.");
                 return vehiculos;
             }
         }
@@ -126,7 +131,7 @@ public class GestionVehiculos {
     }
 
     public void buscarVehiculos(ArrayList<Vehiculo> vehiculos,Scanner sc){
-        if(vehiculos.isEmpty()){
+        if(vehiculos == null || vehiculos.isEmpty()){
             System.out.println("No hay vehiculos registrados");
             return;
         }
@@ -135,8 +140,20 @@ public class GestionVehiculos {
         for(Vehiculo v : vehiculos){
             if(v.getPlaca().equals(placa)){
                 System.out.println(v);
+                return;
             }
         }
+        System.out.println("Vehiculo no encontrado");
     }
 
+    public void mostrarVehiculos(ArrayList<Vehiculo> vehiculos){
+        if(vehiculos == null || vehiculos.isEmpty()){
+            System.out.println("No hay vehiculos registrados");
+            return;
+        }
+        for(Vehiculo v : vehiculos){
+            System.out.println(v);
+            System.out.println("---------------------------");
+        }
+    }
 }

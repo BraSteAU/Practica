@@ -69,5 +69,17 @@ public class contratoRenting extends Vehiculo {
 
     public void setValorTotal(float valorTotal) {
         ValorTotal = valorTotal;
-    }   
+    }
+
+    @Override
+    public String toString() {
+        return "ID contrato: " + IdContrato +
+               "\nCedula cliente: " + CedulaCliente +
+               "\nPlaca: " + getPlaca() +
+               "\nFecha inicio: " + FechaInicio +
+               "\nFecha fin: " + FechaFinal +
+               "\nTotal dias: " + TotalDias +
+               "\nValor total: " + ValorTotal +
+               "\n---------------------------";
+    }
 }
