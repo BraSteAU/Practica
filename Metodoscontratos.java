@@ -2,12 +2,12 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.temporal.ChronoUnit;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Metodoscontratos {
 
-    public LinkedList<contratoRenting> Registrarnuevocontrato(LinkedList<contratoRenting> l, Scanner sc) {
+    public ArrayList<contratoRenting> Registrarnuevocontrato(ArrayList<contratoRenting> l, Scanner sc) {
         Validaciones validaciones = new Validaciones();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         boolean pedir = true;
@@ -48,7 +48,7 @@ public class Metodoscontratos {
         return l;
     }
 
-    public void MostrarLista(LinkedList<contratoRenting> l) {
+    public void MostrarLista(ArrayList<contratoRenting> l) {
         if (l.isEmpty()) {
             System.out.println("No hay contratos registrados");
             return;
@@ -64,7 +64,7 @@ public class Metodoscontratos {
         }
     }
 
-    public contratoRenting BuscarContrato(String idContrato, LinkedList<contratoRenting> l) {
+    public contratoRenting BuscarContrato(String idContrato, ArrayList<contratoRenting> l) {
         for (contratoRenting O : l) {
             if (O.getIdContrato().equals(idContrato)) {
                 return O;
@@ -73,7 +73,7 @@ public class Metodoscontratos {
         return null;
     }
 
-    public LinkedList<contratoRenting> Modificarcontrato(String idContrato, LinkedList<contratoRenting> l, Scanner sc) {
+    public ArrayList<contratoRenting> Modificarcontrato(String idContrato, ArrayList<contratoRenting> l, Scanner sc) {
         Validaciones validaciones = new Validaciones();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
         boolean encontrado = false;
@@ -104,7 +104,7 @@ public class Metodoscontratos {
         return l;
     }
 
-    public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
+    public boolean ValidarIdContrato(ArrayList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
                 return true;
@@ -113,7 +113,7 @@ public class Metodoscontratos {
         return false;
     }
 
-     public LinkedList<contratoRenting> Finalizarcontrato(String idContrato, LinkedList<contratoRenting> l, Scanner sc) {
+     public ArrayList<contratoRenting> Finalizarcontrato(String idContrato, ArrayList<contratoRenting> l, Scanner sc) {
         boolean eliminado = false;
         for (int i = 0; i < l.size(); i++) {
             contratoRenting o = l.get(i);

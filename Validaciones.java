@@ -1,7 +1,7 @@
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeParseException;
-import java.util.LinkedList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Validaciones {
@@ -106,7 +106,7 @@ public class Validaciones {
     }
 
 
-    public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
+    public boolean ValidarIdContrato(ArrayList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
                 return true;

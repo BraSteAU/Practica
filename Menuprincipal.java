@@ -115,7 +115,7 @@ public class Menuprincipal {
                             case 3:
                                 System.out.println("Ingrese el id del contrato a finalizar:");
                                 String idContratoFin = sc.next();
-                                estructura.vectorcontratos = mc.Finalizarcontrato(idContratoFin, estructura.vectorcontratos, estructura.vectorcontratosFinalizados, sc);
+                                estructura.vectorcontratos = mc.Finalizarcontrato(idContratoFin,estructura.vectorcontratos, sc);
                                 break;
                             case 4:
                                 System.out.println("Ingrese el id del contrato a buscar:");
