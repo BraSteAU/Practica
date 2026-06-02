@@ -111,6 +111,7 @@ public class Metodoscontratos {
             }
         }
         return false;
+    }
 
      public LinkedList<contratoRenting> Finalizarcontrato(String idContrato, LinkedList<contratoRenting> l, Scanner sc) {
         boolean eliminado = false;
