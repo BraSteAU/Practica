@@ -104,7 +104,6 @@ public class Metodoscontratos {
         return l;
     }
 
-<<<<<<< Updated upstream
     public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
@@ -112,7 +111,7 @@ public class Metodoscontratos {
             }
         }
         return false;
-=======
+
      public LinkedList<contratoRenting> Finalizarcontrato(String idContrato, LinkedList<contratoRenting> l, Scanner sc) {
         boolean eliminado = false;
         for (int i = 0; i < l.size(); i++) {
@@ -128,7 +127,6 @@ public class Metodoscontratos {
             System.out.println("Contrato no encontrado para finalizar.");
         }
         return l;
->>>>>>> Stashed changes
     }
 }
 
