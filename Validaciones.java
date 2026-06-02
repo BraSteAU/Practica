@@ -105,6 +105,7 @@ public class Validaciones {
         return validarTraccion(sc);
     }
 
+
     public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
