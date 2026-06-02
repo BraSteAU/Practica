@@ -68,8 +68,6 @@ public class Validaciones {
         System.out.println(campo + " Invalido. Debe ser positivo.");
         return validarFloatPositivo(sc, campo);
     }
-<<<<<<< Updated upstream
-=======
     
     public String validarEstado(Scanner sc){
         String estado = sc.next().toLowerCase();
@@ -107,6 +105,7 @@ public class Validaciones {
         return validarTraccion(sc);
     }
 
+
     public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
         for (contratoRenting o : l) {
             if (o.getIdContrato().equals(idContrato)) {
@@ -127,5 +126,5 @@ public class Validaciones {
             return validarFormatoFecha(sc);
         }
     }
->>>>>>> Stashed changes
+
 }
