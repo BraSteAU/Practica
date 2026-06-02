@@ -2,7 +2,6 @@ import java.util.ArrayList;
 
 public class Informe {
 
-	// Overloaded printers (by single object)
 	public static void imprimir(Clientes c) {
 		if (c == null) return;
 		System.out.println(c);
@@ -27,7 +26,7 @@ public class Informe {
 
 	// High level printers for lists
 	public static void imprimirClientes(ArrayList<Clientes> clientes) {
-		System.out.println("==== Informe de Clientes ====");
+		System.out.println("***** Informe de Clientes *****");
 		if (clientes == null || clientes.isEmpty()) {
 			System.out.println("No hay clientes registrados");
 			return;
@@ -38,7 +37,7 @@ public class Informe {
 	}
 
 	public static void imprimirVehiculos(ArrayList<Vehiculo> vehiculos) {
-		System.out.println("==== Informe de Vehículos ====");
+		System.out.println("***** Informe de Vehículos *****");
 		if (vehiculos == null || vehiculos.isEmpty()) {
 			System.out.println("No hay vehículos registrados");
 			return;
@@ -49,7 +48,7 @@ public class Informe {
 	}
 
 	public static void imprimirContratos(ArrayList<contratoRenting> contratos, String titulo) {
-		System.out.println("==== " + titulo + " ====");
+		System.out.println("***** " + titulo + " *****");
 		if (contratos == null || contratos.isEmpty()) {
 			System.out.println("No hay contratos en esta categoría");
 			return;
@@ -60,7 +59,7 @@ public class Informe {
 	}
 
 	public static void imprimirAll(ArrayList<Clientes> clientes, ArrayList<Vehiculo> vehiculos, ArrayList<contratoRenting> contratosActivos, ArrayList<contratoRenting> contratosFinalizados) {
-		System.out.println("\n===== INFORME GENERAL =====\n");
+		System.out.println("\n***** INFORME GENERAL *****\n");
 		imprimirClientes(clientes);
 		System.out.println();
 		imprimirVehiculos(vehiculos);
@@ -70,7 +69,6 @@ public class Informe {
 		imprimirContratos(contratosFinalizados, "Contratos Finalizados");
 		System.out.println();
 
-		// Calcular ingresos totales a partir de contratos finalizados
 		double totalIngresos = 0.0;
 		if (contratosFinalizados != null) {
 			for (contratoRenting ct : contratosFinalizados) {
@@ -78,6 +76,6 @@ public class Informe {
 			}
 		}
 		System.out.println("Total ingresos generados por renting (contratos finalizados): " + totalIngresos);
-		System.out.println("\n===== FIN DEL INFORME =====\n");
+		System.out.println("\n***** FIN DEL INFORME *****\n");
 	}
 }

@@ -15,9 +15,8 @@ public class Menuprincipal {
             System.out.println("1) GESTIÓN DE CLIENTES");
             System.out.println("2) GESTIÓN DE VEHÍCULOS");
             System.out.println("3) GESTIÓN DE CONTRATOS DE RENTING");
-            System.out.println("4) Exportar");
-            System.out.println("5) Importar");
-            System.out.println("6) Salir");
+            System.out.println("4) IMPRIMIR INFORME GENERAL");
+            System.out.println("5) Salir");
             boolean submenu = true;
             int opt = sc.nextInt();
             switch (opt) {
@@ -141,13 +140,10 @@ public class Menuprincipal {
                     }
                     break;
                 case 4:
-                    // Generar informe general
+                    System.out.println("Generar informe general");
                     Informe.imprimirAll(estructura.vectorclientes, estructura.vectorvehiculos, estructura.vectorcontratos, estructura.vectorcontratosFinalizados);
                     break;
                 case 5:
-                    System.out.println("Pagina en mantenimieto");
-                    break;
-                case 6:
                     System.out.println("hasta luego");
                     seguir = false;
                     break;
