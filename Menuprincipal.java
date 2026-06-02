@@ -1,4 +1,5 @@
  import java.util.ArrayList;
+ import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Menuprincipal {
@@ -18,10 +19,10 @@ public class Menuprincipal {
             System.out.println("4) Exportar");
             System.out.println("5) Importar");
             System.out.println("6) Salir");
+            boolean submenu = true;
             int opt = sc.nextInt();
             switch (opt) {
                 case 1:    
-                    boolean submenu = true;
                     while (submenu) {
                         System.out.println("Gestion de clientes");
                         System.out.println("1) Registrar cliente");

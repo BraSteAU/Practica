@@ -33,13 +33,14 @@ public class gestionClientes {
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 System.out.println("Ingrese el nuevo Nombre: ");
-                c.setNombre(sc.next());
+                c.setNombre(v.validarTexto(sc));
                 System.out.println("Ingrese el nuevo Apellido: ");
-                c.setApellido(sc.next());
+                c.setApellido(v.validarTexto(sc));
                 System.out.println("Ingrese el nuevo Telefono: ");
-                c.setTelefono(sc.next());
+                c.setTelefono(v.validarNumeros(sc));
                 System.out.println("Ingrese la nueva Direccion: ");
-                c.setDireccion(sc.next());
+                sc.nextLine();
+                c.setDireccion(v.validarDireccion(sc));
                 System.out.println("Cliente modificado correctamente");
                 return clientes;
             }
