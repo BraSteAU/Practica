@@ -11,15 +11,15 @@ public class gestionClientes {
         }
         Clientes c = new Clientes();
         System.out.println("Ingrese cedula del cliente: ");
-        c.setCedula(sc.next());
+        c.setCedula(v.validarNumeros(sc));
         System.out.println("Ingrese nombre del cliente: ");
-        c.setNombre(sc.next());
+        c.setNombre(v.validarTexto(sc));
         System.out.println("Ingrese apellido del cliente: ");
-        c.setApellido(sc.next());
+        c.setApellido(v.validarTexto(sc));
         System.out.println("Ingrese telefono del cliente: ");
-        c.setTelefono(sc.next());
+        c.setTelefono(v.validarNumeros(sc));
         System.out.println("Ingrese direccion del cliente: ");
-        c.setDireccion(sc.next());
+        c.setDireccion(v.validarDireccion(sc));
         clientes.add(c);
         return clientes;
     }
@@ -56,7 +56,7 @@ public class gestionClientes {
             return clientes;
         }
         System.out.println("Ingrese la cedula del cliente a eliminar: ");
-        String cedula = sc.next();
+        String cedula = v.validarNumeros(sc);
         for (int i = 0; i < clientes.size(); i++) {
             Clientes c = clientes.get(i);
             if(c.getCedula().equals(cedula)){
@@ -82,7 +82,7 @@ public class gestionClientes {
             return;
         }
         System.out.println("Ingrese la cedula del cliente a buscar: ");
-        String cedula = sc.next();
+        String cedula = v.validarNumeros(sc);
         for(Clientes c : clientes){
             if(c.getCedula().equals(cedula)){
                 System.out.println(c);
