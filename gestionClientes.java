@@ -48,8 +48,8 @@ public class gestionClientes {
         return clientes;
     }
 
-    public ArrayList<Clientes> eliminarClientes(ArrayList<Clientes> clientes, ArrayList<contratoRenting> contratos, Scanner sc){
-        if(clientes.isEmpty()){
+    public ArrayList<Clientes> eliminarClientes(ArrayList<Clientes> clientes, ArrayList<contratoRenting> contratosActivos, ArrayList<contratoRenting> contratosFinalizados, Scanner sc){
+        if(clientes == null || clientes.isEmpty()){
             System.out.println("No hay clientes registrados");
             return clientes;
         }
@@ -59,7 +59,12 @@ public class gestionClientes {
             Clientes c = clientes.get(i);
             if(c.getCedula().equals(cedula)){
                 clientes.remove(i);
-                contratos.removeIf(ct -> String.valueOf(ct.getCedulaCliente()).equals(cedula));
+                if (contratosActivos != null) {
+                    contratosActivos.removeIf(ct -> String.valueOf(ct.getCedulaCliente()).equals(cedula));
+                }
+                if (contratosFinalizados != null) {
+                    contratosFinalizados.removeIf(ct -> String.valueOf(ct.getCedulaCliente()).equals(cedula));
+                }
                 System.out.println("Cliente eliminado correctamente");
                 System.out.println("Cualquier contrato asociado al cliente tambien fue eliminado.");
                 return clientes;

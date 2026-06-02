@@ -1,4 +1,4 @@
- import java.util.ArrayList;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Menuprincipal {
@@ -33,19 +33,19 @@ public class Menuprincipal {
                         int opcion = sc.nextInt();
                         switch (opcion) {
                             case 1:
-                                estructura.vector_clientes = gc.registrarClientes(estructura.vector_clientes, sc);
+                                estructura.vectorclientes = gc.registrarClientes(estructura.vectorclientes, sc);
                                 break;
                             case 2:
-                                estructura.vector_clientes = gc.modificarClientes(estructura.vector_clientes, sc);
+                                estructura.vectorclientes = gc.modificarClientes(estructura.vectorclientes, sc);
                                 break;
                             case 3:
-                                estructura.vector_clientes = gc.eliminarClientes(estructura.vector_clientes, estructura.vector_contratos, sc);
+                                estructura.vectorclientes = gc.eliminarClientes(estructura.vectorclientes, estructura.vectorcontratos, estructura.vectorcontratosFinalizados, sc);
                                 break;
                             case 4:
-                                gc.buscarClientes(estructura.vector_clientes, sc);
+                                gc.buscarClientes(estructura.vectorclientes, sc);
                                 break;
                             case 5:
-                                gc.mostrarClientes(estructura.vector_clientes);
+                                gc.mostrarClientes(estructura.vectorclientes);
                                 break; 
                             case 6:
                                 submenu = false;
@@ -69,19 +69,19 @@ public class Menuprincipal {
                         int opcionVeh = sc.nextInt();
                         switch (opcionVeh) {
                             case 1:
-                                estructura.vector_vehiculos = gv.registrarVehiculo(estructura.vector_vehiculos, sc);
+                                estructura.vectorvehiculos = gv.registrarVehiculo(estructura.vectorvehiculos, sc);
                                 break;
                             case 2:
-                                estructura.vector_vehiculos = gv.modificarVehiculos(estructura.vector_vehiculos, sc);
+                                estructura.vectorvehiculos = gv.modificarVehiculos(estructura.vectorvehiculos, sc);
                                 break;
                             case 3:
-                                estructura.vector_vehiculos = gv.eliminarVehiculos(estructura.vector_vehiculos, estructura.vector_contratos, sc);
+                                estructura.vectorvehiculos = gv.eliminarVehiculos(estructura.vectorvehiculos, estructura.vectorcontratos, estructura.vectorcontratosFinalizados, sc);
                                 break;
                             case 4:
-                                gv.buscarVehiculos(estructura.vector_vehiculos, sc);
+                                gv.buscarVehiculos(estructura.vectorvehiculos, sc);
                                 break;
                             case 5:
-                                gv.mostrarVehiculos(estructura.vector_vehiculos);
+                                gv.mostrarVehiculos(estructura.vectorvehiculos);
                                 break;
                             case 6:
                                 submenuVehiculos = false;
@@ -105,22 +105,22 @@ public class Menuprincipal {
                         int opcionContrato = sc.nextInt();
                         switch (opcionContrato) {
                             case 1:
-                                estructura.vector_contratos = mc.Registrarnuevocontrato(estructura.vector_contratos, sc);
+                                estructura.vectorcontratos = mc.Registrarnuevocontrato(estructura.vectorcontratos, sc);
                                 break;
                             case 2:
                                 System.out.println("Ingrese el id del contrato a modificar:");
                                 String idContratoMod = sc.next();
-                                estructura.vector_contratos = mc.Modificarcontrato(idContratoMod, estructura.vector_contratos, sc);
+                                estructura.vectorcontratos = mc.Modificarcontrato(idContratoMod, estructura.vectorcontratos, sc);
                                 break;
                             case 3:
                                 System.out.println("Ingrese el id del contrato a finalizar:");
                                 String idContratoFin = sc.next();
-                                estructura.vector_contratos = mc.Finalizarcontrato(idContratoFin, estructura.vector_contratos, sc);
+                                estructura.vectorcontratos = mc.Finalizarcontrato(idContratoFin, estructura.vectorcontratos, estructura.vectorcontratosFinalizados, sc);
                                 break;
                             case 4:
                                 System.out.println("Ingrese el id del contrato a buscar:");
                                 String idContratoBus = sc.next();
-                                contratoRenting resultado = mc.BuscarContrato(idContratoBus, estructura.vector_contratos);
+                                contratoRenting resultado = mc.BuscarContrato(idContratoBus, estructura.vectorcontratos);
                                 if (resultado != null) {
                                     System.out.println("Contrato encontrado:");
                                     System.out.println(resultado);
@@ -129,7 +129,7 @@ public class Menuprincipal {
                                 }
                                 break;
                             case 5:
-                                mc.MostrarLista(estructura.vector_contratos);
+                                mc.MostrarLista(estructura.vectorcontratos);
                                 break;
                             case 6:
                                 submenuContratos = false;
@@ -141,7 +141,8 @@ public class Menuprincipal {
                     }
                     break;
                 case 4:
-                    System.out.println("Pagina en mantenimieto");
+                    // Generar informe general
+                    Informe.imprimirAll(estructura.vectorclientes, estructura.vectorvehiculos, estructura.vectorcontratos, estructura.vectorcontratosFinalizados);
                     break;
                 case 5:
                     System.out.println("Pagina en mantenimieto");
