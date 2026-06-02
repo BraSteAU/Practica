@@ -108,7 +108,7 @@ public class GestionVehiculos {
 
     }
 
-    public ArrayList<Vehiculo> eliminarVehiculos(ArrayList<Vehiculo> vehiculos, ArrayList<contratoRenting> contratos, Scanner sc){
+    public ArrayList<Vehiculo> eliminarVehiculos(ArrayList<Vehiculo> vehiculos, ArrayList<contratoRenting> contratosActivos, ArrayList<contratoRenting> contratosFinalizados, Scanner sc){
         if(vehiculos == null || vehiculos.isEmpty()){
             System.out.println("No hay vehiculos registrados");
             return vehiculos;
@@ -119,7 +119,12 @@ public class GestionVehiculos {
             Vehiculo v = vehiculos.get(i);
             if(v.getPlaca().equals(placa)){
                 vehiculos.remove(i);
-                contratos.removeIf(ct -> placa.equals(ct.getPlaca()));
+                if (contratosActivos != null) {
+                    contratosActivos.removeIf(ct -> placa.equals(ct.getPlaca()));
+                }
+                if (contratosFinalizados != null) {
+                    contratosFinalizados.removeIf(ct -> placa.equals(ct.getPlaca()));
+                }
                 System.out.println("Vehiculo eliminado correctamente");
                 System.out.println("Cualquier contrato asociado al vehiculo tambien fue eliminado.");
                 return vehiculos;
