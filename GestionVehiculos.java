@@ -2,6 +2,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class GestionVehiculos {
+    Validaciones validaciones = new Validaciones();
     public ArrayList<Vehiculo> registrarVehiculo(ArrayList<Vehiculo> vehiculos, Scanner sc){
         if (vehiculos == null) {
             vehiculos = new ArrayList<>();
