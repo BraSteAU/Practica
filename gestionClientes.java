@@ -19,6 +19,7 @@ public class gestionClientes {
         System.out.println("Ingrese telefono del cliente: ");
         c.setTelefono(v.validarNumeros(sc));
         System.out.println("Ingrese direccion del cliente: ");
+        sc.nextLine();
         c.setDireccion(v.validarDireccion(sc));
         clientes.add(c);
         return clientes;
