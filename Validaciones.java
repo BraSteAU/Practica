@@ -1,3 +1,7 @@
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
+import java.time.format.DateTimeParseException;
+import java.util.LinkedList;
 import java.util.Scanner;
 
 public class Validaciones {
@@ -99,6 +103,28 @@ public class Validaciones {
         }
         System.out.println("Traccion invalida. Debe ser 4x2 o 4x4.");
         return validarTraccion(sc);
+    }
+
+
+    public boolean ValidarIdContrato(LinkedList<contratoRenting> l, String idContrato) {
+        for (contratoRenting o : l) {
+            if (o.getIdContrato().equals(idContrato)) {
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public String validarFormatoFecha(Scanner sc) {
+        String fecha = sc.next();
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy/MM/dd");
+        try {
+            LocalDate.parse(fecha, formatter);
+            return fecha;
+        } catch (DateTimeParseException e) {
+            System.out.println("Formato de fecha invalido. Ingrese la fecha como YYYY/MM/DD");
+            return validarFormatoFecha(sc);
+        }
     }
 
 }
