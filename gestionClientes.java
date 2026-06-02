@@ -4,6 +4,7 @@ import java.util.Scanner;
 
 public class gestionClientes {
     
+    Validaciones v = new Validaciones();
     public ArrayList<Clientes> registrarClientes(ArrayList<Clientes> clientes, Scanner sc){
         if (clientes == null) {
             clientes = new ArrayList<>();
