@@ -5,6 +5,19 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 public class Validaciones {
+
+    public String validarPlaca(Scanner sc) {
+    String placa;
+    while (true) {
+        placa = sc.next();
+        if (placa.matches("[A-Z]{3}[0-9]{3}")) {
+            break; 
+        } else {
+            System.out.println("Placa inválida. Formato requerido: 3 letras y 3 números (ej: ABC123)");
+        }
+    }
+    return placa;
+}
     public String validarNumeros(Scanner sc){
         String cedula = sc.next();
         if(cedula.matches("[0-9]+")){
@@ -74,7 +87,7 @@ public class Validaciones {
         if(estado.equals("disponible") || estado.equals("alquilado")){
             return estado;
         }
-        System.out.println("Estado invalido, debe ser disponoble o alquilado");
+        System.out.println("Estado invalido, debe ser disponible o alquilado");
         return validarEstado(sc);
     }
 

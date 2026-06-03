@@ -18,18 +18,18 @@ public class GestionVehiculos {
                 case 1:
                     carroSedan sedan = new carroSedan();
                     System.out.println("Ingrese la placa del vehiculo: ");
-                    sedan.setPlaca(validaciones.validarNumerosAlfabeto(sc, "Placa"));
+                    sedan.setPlaca(validaciones.validarPlaca(sc));
                     System.out.println("Ingrese la marca: ");
                     sedan.setMarca(validaciones.validarTexto(sc));
-                     System.out.println("Ingrese el modelo:");
+                    System.out.println("Ingrese el modelo:");
                     sedan.setModelo(validaciones.validarEnteroPositivo(sc));
                     System.out.println("Ingrese el precio diario:");
                     sedan.setPrecioDiario(validaciones.validarFloatPositivo(sc, "Precio"));
-                    System.out.println("Ingrese el estado:");
+                    System.out.println("Ingrese el estado: disponible o alquilado");
                     sedan.setEstado(validaciones.validarEstado(sc));
-                    System.out.println("Ingrese el tipo de combustible:");
+                    System.out.println("Ingrese el tipo de combustible: gasolina, diesel o electrico");
                     sedan.setTipoCombustible(validaciones.validarCombustible(sc));
-                    System.out.println("Ingrese la transmision:");
+                    System.out.println("Ingrese la transmision: manual o automatica");
                     sedan.setTransmision(validaciones.validarTransmision(sc));
                     v = sedan;
                     break;
@@ -37,16 +37,16 @@ public class GestionVehiculos {
                 case 2:
                     camionetaSUV camioneta = new camionetaSUV();
                     System.out.println("Ingrese la placa:");
-                    camioneta.setPlaca(validaciones.validarNumerosAlfabeto(sc, "Placa"));
+                    camioneta.setPlaca(validaciones.validarPlaca(sc));
                     System.out.println("Ingrese la marca:");
                     camioneta.setMarca(validaciones.validarTexto(sc));
                     System.out.println("Ingrese el modelo:");
                     camioneta.setModelo(validaciones.validarEnteroPositivo(sc));
                     System.out.println("Ingrese el precio diario:");
                     camioneta.setPrecioDiario(validaciones.validarFloatPositivo(sc, "Precio"));
-                    System.out.println("Ingrese el estado:");
+                    System.out.println("Ingrese el estado: disponible o alquilado");
                     camioneta.setEstado(validaciones.validarEstado(sc));
-                    System.out.println("Ingrese el tipo de traccion:");
+                    System.out.println("Ingrese el tipo de traccion: 4x2 o 4x4");
                     camioneta.setTipoTraccion(validaciones.validarTraccion(sc));
                     System.out.println("Ingrese la capacidad de pasajeros:");
                     camioneta.setCapacidadPasajeros(sc.nextInt());
@@ -115,7 +115,7 @@ public class GestionVehiculos {
             return vehiculos;
         }
         System.out.println("Ingrese la placa del vehiculo a eliminar: ");
-        String placa = sc.next();
+        String placa = validaciones.validarPlaca(sc);
         for (int i = 0; i < vehiculos.size(); i++) {
             Vehiculo v = vehiculos.get(i);
             if(v.getPlaca().equals(placa)){
@@ -141,7 +141,7 @@ public class GestionVehiculos {
             return;
         }
         System.out.println("Ingrese la placa del vehiculo que quiere ver: ");
-        String placa = validaciones.validarNumerosAlfabeto(sc,"Placa");
+        String placa = validaciones.validarPlaca(sc);
         for(Vehiculo v : vehiculos){
             if(v.getPlaca().equals(placa)){
                 System.out.println(v);
