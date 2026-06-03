@@ -1,4 +1,4 @@
-package Practica;
+
 
 public class Vehiculo {
     protected String Placa;
@@ -48,6 +48,7 @@ public class Vehiculo {
     public void setEstado(String estado) {
         Estado = estado;
     }
+
 
     
 }
